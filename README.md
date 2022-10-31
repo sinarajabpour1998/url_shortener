@@ -19,12 +19,12 @@ cd url_shortener
 composer install
 ```
 
-4- create env file:
+4- create .env file:
 ```shell
-cp .env.example .env
+cp env .env
 ```
 
-5- setup database in env file:
+5- setup database in .env file:
 ```shell
 database.default.hostname = localhost
 database.default.database = 'test_database_name'
