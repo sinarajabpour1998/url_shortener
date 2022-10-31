@@ -24,7 +24,8 @@ class Home extends BaseController
                 $model = model(LinksModel::class);
                 $model->save([
                     'link' => $this->request->getPost('url'),
-                    'link_key' => $key
+                    'link_key' => $key,
+                    'created_at' => date('Y-m-d H:i:s')
                 ]);
             } else {
                 $key = $link['link_key'];
