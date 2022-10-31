@@ -11,6 +11,7 @@
                 <input type="submit" value="Copy" class="centeredBox__formSubmitInput" >
             </form>
         </div>
+        <a href="<?php echo base_url('/') ?>">Back</a>
     </div>
 </div>
 <script type="application/javascript">

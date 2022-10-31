@@ -14,7 +14,7 @@ class Home extends BaseController
     public function createLink()
     {
         if ($this->validate([
-                'url' => 'required|max_length[255]',
+                'url' => 'required|max_length[255]|valid_url',
             ])) {
 
             $model = new LinksModel();
