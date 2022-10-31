@@ -37,6 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->post('/link/create', 'Home::createLink');
+$routes->get('/s/(:alphanum)', 'Home::showLink/$1');
 
 /*
  * --------------------------------------------------------------------

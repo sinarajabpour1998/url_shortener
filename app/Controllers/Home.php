@@ -13,26 +13,55 @@ class Home extends BaseController
 
     public function createLink()
     {
-        $model = model(LinksModel::class);
-
-        if ($this->request->withMethod('post') && $this->validate([
-                'link' => 'required|max_length[255]',
+        if ($this->validate([
+                'url' => 'required|max_length[255]',
             ])) {
 
-            $link = $model->where('link', '=', $this->request->getPost('link'))->first();
+            $model = new LinksModel();
+            $link = $model->where('link',$this->request->getPost('url'))->first();
             if (is_null($link)) {
-                $key = random_string('abcdefghktqrs', 6);
+                $key = substr(str_shuffle(str_repeat($x='0123456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(6/strlen($x)) )),1,6);
+                $model = model(LinksModel::class);
                 $model->save([
-                    'link' => $this->request->getPost('link'),
-                    'key' => $key
+                    'link' => $this->request->getPost('url'),
+                    'link_key' => $key
                 ]);
             } else {
-                $key = $link->key;
+                $key = $link['link_key'];
             }
 
-            return redirect()
-                ->with('success', 'Link generated')
+            return redirect()->back()
+                ->with('success', 'Link generated: ')
                 ->with('link', $key);
+        } else {
+            return redirect()->back()
+                ->with('error','Link is not valid');
         }
+    }
+
+    public function showLink($key)
+    {
+        $validator = $this->validateData([
+            'key' => $key
+        ], [
+            'key' => 'required|max_length[255]',
+        ]);
+        if (!$validator) {
+            return json_encode([
+                'status' => 422,
+                'message' => 'Link is not valid'
+            ]);
+        }
+
+        $model = new LinksModel();
+        $link = $model->where('link_key',$key)->first();
+        if (is_null($link)) {
+            return json_encode([
+                'status' => 404,
+                'message' => 'Link not found'
+            ]);
+        }
+
+        return redirect()->to($link['link']);
     }
 }

@@ -7,5 +7,5 @@ class LinksModel extends Model
 {
     protected $table = 'links';
 
-    protected $allowedFields = ['link', 'key', 'created_at'];
+    protected $allowedFields = ['link', 'link_key', 'created_at'];
 }

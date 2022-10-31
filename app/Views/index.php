@@ -2,7 +2,11 @@
 
 <?= session()->getFlashdata('error') ?>
 <?= session()->getFlashdata('success') ?>
-<?= session()->getFlashdata('link') ?>
+<?php
+if (session()->getFlashdata('link')) {
+    echo '<a href="/s/' . session()->getFlashdata('link') . '" target="_blank">Show</a>';
+}
+?>
 <?= service('validation')->listErrors() ?>
 
 <form action="/link/create" method="post">
