@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -397,7 +397,7 @@ template {
 }
 
 .color-secondary {
-  color: #766fde;
+  color: #322b97;
 }
 
 .color-light {
@@ -483,26 +483,78 @@ template {
 }
 
 body {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
   background-color: #fcfcfc;
 }
 
-.wrapper {
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 500000s ease-in-out 0s;
+  -webkit-transition: background-color 500000s ease-in-out 0s;
+  -moz-transition: background-color 500000s ease-in-out 0s;
+  -ms-transition: background-color 500000s ease-in-out 0s;
+  -o-transition: background-color 500000s ease-in-out 0s;
+}
+
+.wrapper .mainTitle {
+  text-align: center;
+  display: block;
+  margin: 0;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #322b97;
+}
+@media screen and (min-width: 992px) {
+  .wrapper .mainTitle {
+    margin-top: 7rem;
+  }
+}
+.wrapper .subtitle {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 500px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #777;
   padding: 0 1rem;
 }
+@media screen and (min-width: 768px) {
+  .wrapper .subtitle {
+    padding: 0;
+  }
+}
+.wrapper .boxSubtitle {
+  text-align: center;
+  margin: 0.5rem auto;
+  max-width: 500px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #322b97;
+  opacity: 0.5;
+}
 .wrapper .centeredBox {
-  margin: 40vh auto 0;
+  margin: 4rem auto 0;
+  padding: 0 1rem;
 }
 @media screen and (min-width: 992px) {
   .wrapper .centeredBox {
-    margin: 35vh auto 0;
-    max-width: 75vw;
+    max-width: 600px;
   }
 }
 .wrapper .centeredBox .centeredBoxInner {
   background-color: #fff;
-  padding: 2rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.0666666667);
+  padding: 1.5rem;
+  box-shadow: 1rem 2rem 2rem #f0f0fb;
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -510,9 +562,16 @@ body {
   -o-border-radius: 1rem;
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form {
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f6f5fc;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form .centeredBox__formInputPrependedWrapper {
   display: flex;
@@ -521,16 +580,14 @@ body {
   margin-right: 1rem;
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form .centeredBox__formInputPrependedWrapper .centeredBox__formInputPrependedIconWrapper {
-  padding: 0 1rem 0 0;
+  padding: 0;
   margin-right: 1rem;
   flex-shrink: 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.1333333333);
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form .centeredBox__formInputPrependedWrapper .centeredBox__formInputPrependedIconWrapper .centeredBox__formInputPrependedIcon {
   display: block;
   margin: 0;
-  width: 20px;
-  opacity: 0.7;
+  width: 15px;
   pointer-events: none;
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form .centeredBox__formInputPrependedWrapper .centeredBox__formInputPrependedInput {
@@ -539,26 +596,27 @@ body {
   display: block;
   width: 100%;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.5333333333);
+  color: #555;
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form .centeredBox__formInputPrependedWrapper .centeredBox__formInputPrependedInput::placeholder {
-  color: rgba(0, 0, 0, 0.5333333333);
+  color: #bfbcec;
 }
 .wrapper .centeredBox .centeredBoxInner .centeredBox__form .centeredBox__formSubmitInput {
   display: block;
   width: 100%;
-  max-width: 150px;
-  background-color: #766fde;
+  max-width: 80px;
+  background: linear-gradient(to right, #9690ed, #766fde);
   color: #fafafa;
   border: none;
   line-height: 2.5;
+  font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 4px 10px #ecebfb;
-  transition: box-shadow 0.1s linear 0s;
-  -webkit-transition: box-shadow 0.1s linear 0s;
-  -moz-transition: box-shadow 0.1s linear 0s;
-  -ms-transition: box-shadow 0.1s linear 0s;
-  -o-transition: box-shadow 0.1s linear 0s;
+  box-shadow: 0 5px 10px #ecebfb;
+  transition: box-shadow 0.2s linear 0s;
+  -webkit-transition: box-shadow 0.2s linear 0s;
+  -moz-transition: box-shadow 0.2s linear 0s;
+  -ms-transition: box-shadow 0.2s linear 0s;
+  -o-transition: box-shadow 0.2s linear 0s;
   border-radius: 0.25rem;
   -webkit-border-radius: 0.25rem;
   -moz-border-radius: 0.25rem;
