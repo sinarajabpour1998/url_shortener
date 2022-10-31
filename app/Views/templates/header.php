@@ -8,3 +8,4 @@
     <link rel="stylesheet" href="<?php echo base_url('/css/app.min.css') ?>">
 </head>
 <body>
+    

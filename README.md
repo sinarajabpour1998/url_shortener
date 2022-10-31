@@ -21,7 +21,7 @@ composer install
 
 4- create env file:
 ```shell
-cp .env.example .env
+cp env .env
 ```
 
 5- setup database in env file:
