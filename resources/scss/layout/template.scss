@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+// font-family: 'Plus Jakarta Sans', sans-serif;
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #fcfcfc;
+}
+
+.wrapper {
+    padding: 0 1rem;
+    .centeredBox {
+        margin: 40vh auto 0;
+        @include lg-style () {
+            margin: 35vh auto 0;
+            max-width: 75vw
+        };
+        .centeredBoxInner {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 0 1rem #0001;
+            @include radius (1rem);
+            .centeredBox__form {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                .centeredBox__formInputPrependedWrapper {
+                    display: flex;
+                    align-items: center;
+                    flex-grow: 1;
+                    margin-right: 1rem;
+                    
+                    .centeredBox__formInputPrependedIconWrapper {
+                        padding: 0 1rem 0 0;
+                        margin-right: 1rem;
+                        flex-shrink: 0;
+                        border-right: 1px solid #0002;
+                        .centeredBox__formInputPrependedIcon {
+                            display: block;
+                            margin: 0;
+                            width: 20px;
+                            opacity: .7;
+                            pointer-events: none;
+                        }
+                    }
+                    .centeredBox__formInputPrependedInput {
+                        flex-grow: 1;
+                        line-height: 1.5;
+                        display: block;
+                        width: 100%;
+                        font-size: 1rem;
+                        color: #0008;
+                        &::placeholder {
+                            color: #0008;
+                        }
+                        @extend .reset-input;
+                    }
+                }
+                .centeredBox__formSubmitInput {
+                    display: block;
+                    width: 100%;
+                    max-width: 150px;
+                    background-color: getColor(primary);
+                    color: getColor(light);
+                    border: none;
+                    line-height: 2.5;
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px lighten($color: getColor(primary), $amount: 30);
+                    @include transition (box-shadow .1s linear 0s);
+                    @include radius (.25rem);
+                    @include lg-style () {
+                        &:hover {
+                            box-shadow: 0 6px 10px lighten($color: getColor(primary), $amount: 20);
+                        }
+                    };
+                }
+            }
+        }
+    }
+}

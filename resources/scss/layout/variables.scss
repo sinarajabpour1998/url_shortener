@@ -1,0 +1,284 @@
+$colors: (
+    body: #fff,
+    primary: #766fde,
+    secondary: #766fde,
+    light: #fafafa,
+    dark: #060607,
+    disabled: #b4b4b4,
+    success: #2bb57a,
+    danger: #e85050,
+);
+
+@function getColor($color) {
+    @return map-get($map: $colors, $key: $color);
+}
+/*=================================================================*/
+
+// these are bootstrap breakpoints that should be customized
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$gridbreakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px ,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+@function breakpoint($breakpoit) {
+    @return map-get($map: $gridbreakpoints, $key: $breakpoit);
+}
+/*=================================================================*/
+
+
+
+@mixin radius ($value: .5rem){
+    border-radius: $value;
+    -webkit-border-radius: $value;
+    -moz-border-radius: $value;
+    -ms-border-radius: $value;
+    -o-border-radius: $value;
+}
+
+@mixin transition ($value: all .1s linear 0s) {
+    transition: $value;
+    -webkit-transition: $value;
+    -moz-transition: $value;
+    -ms-transition: $value;
+    -o-transition: $value;
+}
+
+@mixin transform ($value) {
+    transform: $value;
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    -ms-transform: $value;
+    -o-transform: $value;
+}
+
+/*=================================================================*/
+
+@mixin media ($query: breakpoint(md)) {
+    @media screen and (min-width: $query) {
+        @content;
+    }
+}
+
+@mixin media-to ($query: breakpoint(md)) {
+    @media screen and (max-width: $query) {
+        @content;
+    }
+}
+
+/*=================================================================*/
+
+@mixin xs-style {
+    @media screen and (min-width: 0) {
+        @content;
+    }
+}
+
+@mixin sm-style {
+    @media screen and (min-width: breakpoint(sm)) {
+        @content;
+    }
+}
+
+@mixin md-style {
+    @media screen and (min-width: breakpoint(md)) {
+        @content;
+    }
+}
+
+@mixin lg-style {
+    @media screen and (min-width: breakpoint(lg)) {
+        @content;
+    }
+}
+
+@mixin xl-style {
+    @media screen and (min-width: breakpoint(xl)) {
+        @content;
+    }
+}
+
+@mixin xxl-style {
+    @media screen and (min-width: breakpoint(xxl)) {
+        @content;
+    }
+}
+
+
+/*========================== TYPOGRAPHY ===========================*/
+
+// 24
+.t-h2 {
+    font-size:1.5rem;
+    font-weight: 500;
+}
+
+// 18
+.t-h3 {
+    font-size:1.125rem;
+    font-weight: 500;
+}
+
+// 14
+.t-body {
+    font-size:.875rem;
+    font-weight: 400;
+}
+
+// 12
+.t-small {
+    font-size:.75rem;
+    font-weight: 400;
+}
+
+.t-xl-h2 {
+    @include xl-style {
+        font-size:1.5rem;
+        font-weight: 600;
+    }
+}
+.t-xl-h3 {
+    @include xl-style {
+        font-size:1.125rem;
+        font-weight: 500;
+    }
+}
+.t-xl-body {
+    @include xl-style {
+        font-size:.875rem;
+        font-weight: 400;
+    }
+}
+.t-xl-small {
+    @include xl-style {
+        font-size:.75rem;
+        font-weight: 400;
+    }
+}
+/*========================== Font Weight ==========================*/
+.t-light {
+    font-weight: 200;    
+}
+.t-normal {
+    font-weight: 400;    
+}
+.t-medium {
+    font-weight: 500;    
+}
+.t-bold {
+    font-weight: 600;
+}
+/*========================== Text Transform ==========================*/
+.text-capitalize {
+    text-transform: capitalize;
+}
+.text-uppercase {
+    text-transform: capitalize;
+}
+/*========================== Text Color ==========================*/
+.color-body {
+    color: getColor(body);
+}
+.color-section {
+    color: getColor(section);
+}
+.color-primary {
+    color: getColor(primary);
+}
+.color-secondary {
+    color: getColor(secondary);
+}
+.color-light {
+    color: getColor(light);
+}
+.color-dark {
+    color: getColor(dark);
+}
+.color-success {
+    color: getColor(success);
+}
+.color-danger {
+    color: getColor(danger);
+}
+/*========================== opacity ===========================*/
+.op-sub {
+    opacity: .85;
+}
+.op-body {
+    opacity: .9;
+}
+
+.op-xl-sub {
+    @include xl-style {
+        opacity: .85;
+    }
+}
+.op-xl-body {
+    @include xl-style {
+        opacity: .9;
+    }
+}
+/*========================== reset ===========================*/
+.reset-btn {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.reset-shadow {
+    box-shadow: none;
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.reset-link {
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+}
+.reset-input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+    }
+}

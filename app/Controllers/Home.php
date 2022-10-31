@@ -8,7 +8,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('templates/header', ['title' => 'Url Shortner']) . view('index') . view('templates/footer');
+        return view('templates/header', ['title' => 'Url Shortener']) . view('index') . view('templates/footer');
     }
 
     public function createLink()
@@ -30,13 +30,36 @@ class Home extends BaseController
                 $key = $link['link_key'];
             }
 
-            return redirect()->back()
-                ->with('success', 'Link generated: ')
-                ->with('link', $key);
+            return redirect()->route('generated_link' , [$key]);
         } else {
             return redirect()->back()
                 ->with('error','Link is not valid');
         }
+    }
+
+    public function generatedLink($link)
+    {
+        $validator = $this->validateData([
+            'link' => $link
+        ], [
+            'link' => 'required|max_length[255]',
+        ]);
+        if (!$validator) {
+            return json_encode([
+                'status' => 422,
+                'message' => 'Link is not valid'
+            ]);
+        }
+        $model = new LinksModel();
+        $link = $model->where('link_key',$link)->first();
+        if (is_null($link)) {
+            return json_encode([
+                'status' => 404,
+                'message' => 'Link not found'
+            ]);
+        }
+
+        return view('templates/header', ['title' => 'Url Shortener']) . view('show', ['link' => $link['link_key']]) . view('templates/footer');
     }
 
     public function showLink($key)

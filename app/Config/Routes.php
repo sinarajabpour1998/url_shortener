@@ -38,6 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->post('/link/create', 'Home::createLink');
 $routes->get('/s/(:alphanum)', 'Home::showLink/$1');
+$routes->get('/generated/(:alphanum)', 'Home::generatedLink/$1', ['as' => 'generated_link']);
 
 /*
  * --------------------------------------------------------------------
