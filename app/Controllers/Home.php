@@ -59,8 +59,8 @@ class Home extends BaseController
                 'message' => 'Link not found'
             ]);
         }
-
-        return view('templates/header', ['title' => 'Url Shortener']) . view('show', ['link' => $link['link_key']]) . view('templates/footer');
+        $route = base_url('/s') . '/' . $link['link_key'];
+        return view('templates/header', ['title' => 'Url Shortener']) . view('show', ['link' =>  $route]) . view('templates/footer');
     }
 
     public function showLink($key)

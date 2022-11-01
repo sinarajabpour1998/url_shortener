@@ -8,12 +8,6 @@
     <div class="centeredBox">
         <div class="centeredBoxInner">
             <?= session()->getFlashdata('error') ?>
-            <?= session()->getFlashdata('success') ?>
-            <?php
-            if (session()->getFlashdata('link')) {
-                echo '<a href="/s/' . session()->getFlashdata('link') . '" target="_blank">Show</a>';
-            }
-            ?>
             <?= service('validation')->listErrors() ?>
             <form class="centeredBox__form"  action="/link/create" method="post">
                 <div class="centeredBox__formInputPrependedWrapper">
